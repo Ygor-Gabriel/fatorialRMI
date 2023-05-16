@@ -1,0 +1,34 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+import java.io.Serializable;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.server.UnicastRemoteObject;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+
+public class ServidorRMI extends UnicastRemoteObject implements InterfaceRMI, Serializable {
+    public ServidorRMI() throws RemoteException {
+    }
+
+    public static void main(String[] var0) {
+        try {
+            ServidorRMI var1 = new ServidorRMI();
+            System.setProperty("java.rmi.server.hostname", "localhost");
+            LocateRegistry.createRegistry(1099);
+            Naming.bind("data", var1);
+        } catch (Exception var2) {
+            System.err.println(var2.toString());
+        }
+
+    }
+
+    public int fatorial(int var1) {
+        return var1 == 1 ? 1 : this.fatorial(var1 - 1) * var1;
+    }
+}

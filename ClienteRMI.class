@@ -1,0 +1,46 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+import java.io.PrintStream;
+import java.rmi.Naming;
+import java.util.Scanner;
+
+public class ClienteRMI {
+    public ClienteRMI() {
+    }
+
+    public static void menu() {
+        System.out.println("Escolha uma opção:");
+        System.out.println("1 - Fatorial");
+        System.out.println("7 - Sair\n");
+    }
+
+    public static void main(String[] var0) {
+        try {
+            InterfaceRMI var1 = (InterfaceRMI)Naming.lookup("rmi://localhost:1099/data");
+            Scanner var3 = new Scanner(System.in);
+
+            int var2;
+            do {
+                menu();
+                var2 = var3.nextInt();
+                PrintStream var10000;
+                String var10001;
+                switch (var2) {
+                    case 1:
+                        Scanner var4 = new Scanner(System.in);
+                        System.out.println("\nDigite um nÃºmero:");
+                        int var5 = var4.nextInt();
+                        int var6 = var1.fatorial(var5);
+                        System.out.println("Resultado do fatorial: " + var6 + "\n");
+ [                       break;
+                }
+            } while(var2 != 7);
+        } catch (Exception var15) {
+            System.err.println(var15.toString());
+        }
+
+    }
+}
